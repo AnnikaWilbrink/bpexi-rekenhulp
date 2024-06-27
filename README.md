@@ -17,12 +17,8 @@ python -m pip install fpdf
 ```
 
 ## Opstarten
-Het opstarten van de applicatie kan via pythonanywhere en via anaconda.
+Het opstarten van de applicatie kan via anaconda.
 
-### pythonanywhere
-Navigeer naar de URL: https://rekenhulp.pythonanywhere.com/
-
-### anaconda
 Open een termminal. Navigeer naar het project. Voer de volgende commandos uit in de terminal: 
 ```bash
 cd rekenhulp 
@@ -40,8 +36,8 @@ Sondevoeding rekenhulp kan drie rapporten produceren:
 In de blokhaken [] staan de gegevens van de patiënt. 
 
 ## Auteurs
- - Annika Wilbrink (s1121325@student.hsleiden.nl)
- - Eveline Verschuren (s1103140@student.hsleiden.nl) 
- - Noa van Daatselaar (s1117684@student.hsleiden.nl) 
- - Selena Impink (s1119674@student.hsleiden.nl) 
+ - Annika Wilbrink
+ - Eveline Verschuren
+ - Noa van Daatselaar
+ - Selena Impink
 
