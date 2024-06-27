@@ -1,0 +1,200 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+.menu {
+    position: fixed;
+    overflow: hidden;
+    background-color: white;
+    top: 0;
+    width: 100%;
+    height: 5.3%;
+    border-bottom: 0.1vh solid #404040;
+    z-index: 1;
+}
+
+.menu #sondevoeding-link {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 1.2257405515832482vh 1.634320735444331vh;
+    text-decoration: none;
+    font-size: 2.5vh;
+    border-right: 1px solid #404040;
+}
+
+.menu #rekenhulp-link {
+    float: right;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 1.2257405515832482vh 1.634320735444331vh;
+    text-decoration: none;
+    font-size: 2.5vh;
+    border-left: 1px solid #404040;
+}
+
+.menu a:hover {
+    background-color: rgba(228, 23, 116, 0.7);
+    color: white;
+}
+
+.titel {
+    font-size: 235%;
+    text-align: center;
+    margin-top: 5%;
+}
+
+#rust-tabel {
+  margin-left: 10%;
+  margin-bottom: 20%;
+}
+
+.rustmetabolismes {
+  float: left;
+  color: black;
+  background-color: rgba(255, 161, 73, 0.6);
+   margin-top: 7%;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  width: 20%;
+  overflow: hidden;
+  table-layout: fixed;
+}
+
+.rustmetabolismes td{
+  border-collapse: collapse;
+  text-align: center;
+  padding: 10%;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+    width: 100%;
+}
+
+.rustmetabolismes th {
+  border-bottom: 0.5px solid;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 2%;
+  cursor: pointer;
+  max-width: 500px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 3%;
+}
+
+.text_eiwit {
+  position: absolute;
+  margin-top: 1%;
+  margin-left: 42%;
+}
+
+.text_energie {
+  position: absolute;
+  margin-top: 1%;
+  margin-left: 4%;
+}
+
+.text_BMI {
+  position: absolute;
+  margin-top: 1%;
+  margin-left: 84%;
+}
+
+#energie-eiwit {
+  position: absolute;
+  width: 60%;
+  /*height: 70%;*/
+  margin-left: 34%;
+}
+
+.circle_energie {
+  position: absolute;
+  margin-top: 6%;
+  margin-left: 4.2%;
+  width: 170px;
+  height: 170px;
+  line-height: 170px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: black;
+  text-align: center;
+  background: rgba(228, 23, 116, 0.6);
+}
+
+.circle_eiwit {
+  position: absolute;
+  margin-top: 6%;
+  margin-left: 40%;
+  width: 170px;
+  height: 170px;
+  line-height: 170px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: black;
+  text-align: center;
+  background: rgba(144, 61, 165, 0.7);
+}
+
+.circle_BMI {
+  position: absolute;
+  margin-top: 6%;
+  margin-left: 76%;
+  width: 170px;
+  height: 170px;
+  line-height: 170px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: black;
+  text-align: center;
+  background: rgba(246, 78, 67, 0.75);
+}
+
+#sondevoeding-tabel {
+  margin-top: 23%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#tabel-label {
+  float: left;
+  margin-bottom: 0.5%;
+  margin-left: 10%;
+}
+
+#checkbox-extra {
+  float: right;
+  margin-right: 10%;
+  margin-bottom: 0.5%;
+}
+
+.tabel {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+.tabel td, .tabel th {
+  text-align: left;
+  padding: 10px;
+}
+
+.tabel tr:nth-of-type(1n+5) {
+  text-align: left;
+  display: none;
+}
+
+tr:nth-child(even) {
+    background-color: #e6e6e6;
+}
+
+
+
+

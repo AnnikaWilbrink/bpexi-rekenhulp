@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sondevoeding Rekenhulp</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sondevoeding.css' %}">
+    {% block scripts %}
+        <script src="{% static 'scripts/pop-up.js' %}"></script>
+    {% endblock scripts %}
+</head>
+<body>
+    <div class="menu">
+        <a href="/../">Terug naar rekenhulp</a>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div id="container">
+            <h1 class="titel">Sondevoedingen</h1>
+
+        <a class="button" href="/toevoegen/">Toevoegen</a>
+        <p>Soorten sondevoedingen - per 100 ml</p>
+        <div class="column">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Soort</th>
+                    <th>Energie (kcal)</th>
+                    <th>Eiwit (g)</th>
+                    <th>Vezels (g)</th>
+                    <th>Zout (g)</th>
+                    <th>Natrium (mg)</th>
+                    <th>Vocht (ml)</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {% for regel in tabel %}
+                <tr class="data">
+                    <td>{{forloop.counter}}</td>
+                    <td id="eerste_regel{{forloop.counter}}">{{regel.Soort}}</td>
+                    <td>{{regel.Energie}}</td>
+                    <td>{{regel.Eiwit}}</td>
+                    <td>{{regel.Vezels}}</td>
+                    <td>{{regel.Zout}}</td>
+                    <td>{{regel.Natrium}}</td>
+                    <td>{{regel.Vocht}}</td>
+                    <td>
+                        <a href="{% url 'bewerken' regel.Soort %}"> <img
+                                src="{% static 'img/pencil.png' %}"
+                                height ="30" width="30" /></a>
+                    </td>
+                    <td>
+                        <button type="button" id="kruisje" value="{{forloop.counter}}" onclick="annulerenPopUp(true, this.value)"><img src="{% static 'img/cross.png' %}" height ="30" width="30" /></button>
+
+                        <div id="pop-up" class="pop-up">
+                            <h1 id="tekst_popup">Weet u zeker dat u wilt verwijderen?</h1>
+                            <button type="button" id="annuleren" onclick="annulerenPopUp(false, 1)">Annuleren</button>
+                            <span id="test"></span>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                </table>
+        </div>
+        </div>
+        <div id="namen">
+            <span id="naamtext">Annika Wilbrink, Eveline Verschuren, Noa van Daatselaar en Selena Impink</span>
+        </div>
+    </form>
+</body>
+</html>

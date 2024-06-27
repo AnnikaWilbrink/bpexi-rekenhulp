@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sondevoeding Rekenhulp</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/resultaten_style.css' %}">
+</head>
+<body>
+<div class="menu">
+  <a href="/" id="rekenhulp-link">Terug naar Rekenhulp</a>
+  <a href="/sondevoedingen" id="sondevoeding-link">Sondevoedingen</a>
+</div>
+
+<h1 class="titel">Resultaten</h1>
+
+<div id="energie-eiwit">
+    <h3 class="text_energie">Energiebehoefte</h3>
+    <div class="circle_energie">{{energie}} kcal</div>
+
+    <h3 class="text_eiwit">Eiwitbehoefte</h3>
+    <div class="circle_eiwit">{{eiwit}} g p/d</div>
+
+    <h3 class="text_BMI">BMI</h3>
+    <div class="circle_BMI">{{bmi}}</div>
+</div>
+
+<div id="rust-tabel">
+    <table class="rustmetabolismes">
+        <thead>
+        <tr>
+            <th>Rustmetabolisme</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{rust}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+<div id="sondevoeding-tabel">
+    <span id="tabel-label">Tabel Sondevoeding</span>
+    <div id="checkbox-extra">
+        <input type="checkbox" id="extra-sondevoeding" name="extra-sondevoeding" onclick="extra_rijen()">
+        <label for="extra-sondevoeding">+Sondevoeding</label>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <table class="tabel">
+            <tr>
+                <th></th>
+                <th>Soort</th>
+                <th>Pompstand</th>
+                <th>Totale energie en eiwit pomp</th>
+                <th>Handmatige porties</th>
+                <th>Totale energie en eiwit portie</th>
+                <th>Hoeveelheid sondevoeding</th>
+            </tr>
+            {% for i in selection %}
+                <tr>
+                    <td>
+                        <input type="hidden" id="rapnaam" style="display: none" value={{rapnaam}}>
+                        <input type="hidden" id="pompnaam" style="display: none" value={{pompnaam}}>
+                        <input type="hidden" id="portienaam" style="display: none" value={{portienaam}}>
+                        <button type="submit" name="maakPDF" value="{{forloop.counter0}}">Maak PDF aan</button>
+                    </td>
+                    {% for j in i %}
+                    <td>{{j}}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </form>
+</div>
+
+</body>
+<script>
+
+    window.onload=function(){
+        /**
+         * Summary. In deze functie worden de PDF's geopend.
+         */
+        if (document.getElementById('rapnaam').value !== '') {
+            window.open('/' + document.getElementById('rapnaam').value);
+            window.open('/' + document.getElementById('pompnaam').value);
+            window.open('/' + document.getElementById('portienaam').value);
+        }
+    }
+
+function extra_rijen() {
+    /**
+     * Summary. Als de checkbox is aangevinkt worden er extra
+     * rijen aan de tabel toegevoegd. Wordt de checkbox afgevinkt
+     * worden de extra rijen verwijderd.
+     */
+    let checkbox = document.getElementById('extra-sondevoeding');
+    let tables = document.getElementsByTagName('tr');
+    if (checkbox.checked) {
+        for (let i = 6; i < tables.length; i++) {
+            tables[i].style.setProperty('display', 'revert');
+        }
+    }
+    else if (checkbox.checked === false){
+        for (let j = 6; j < tables.length; j++) {
+            tables[j].style.removeProperty('display')
+            tables[j].style.setProperty('display', 'none');
+        }
+    }
+}
+
+</script>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sondevoeding Rekenhulp</title>
+    {% load static %}
+    <script type="text/javascript" src="{% static 'scripts/voorblad.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/voorblad.css' %}">
+</head>
+<body>
+    <div class="menu">
+        <a href="/sondevoedingen/">Sondevoedingen</a>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div id="container">
+            <h1 class="titel">Rekenhulp</h1>
+            <div id="inputs">
+                <span id="message"></span><br>
+                <label class="label" for="naam">Naam:</label>
+                <input class="invoer" type="text" id="naam" name="naam" onkeyup="naamCheck()" required autocomplete="off"><br><br>
+
+                <label class="label" for="datum">Geboortedatum:</label>
+                <input class="invoer" type="date" id="datum" name="datum" required><br><br>
+
+                <div class="radioboxen">
+                    <label class="labelradio1" for="geslacht">Geslacht:</label>
+                    <input class="invoerradio1" type="radio" id="vrouw" name="geslacht" value="vrouw" required>
+                    <label for="vrouw">Vrouw</label>
+                    <input class="invoerradio1" type="radio" id="man" name="geslacht" value="man" required>
+                    <label for="man">Man</label><br><br>
+                </div>
+
+                <div>
+                    <label class="label" for="lengte">Lengte (cm):</label>
+                    <input class="invoer" min="40" max="250" type="number" id="lengte" name="lengte" onchange="bmiBerekenen()" required><br><br>
+
+                    <label class="label" for="gewicht">Gewicht (kg):</label>
+                    <input class="invoer" min="0" max="1000" type="number" id="gewicht" name="gewicht" onchange="bmiBerekenen()" required><br><br>
+
+                    <div class="dot">
+                        <div class="dotText">
+                            BMI <br id="break">
+                            <span id="bmi-waarde">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="radioboxen">
+                    <label class="labelradio1" for="rust">Rustmetabolisme:</label>
+                    <input class="invoerradio1" type="radio" id="who" name="rust" value="WHO" required>
+                    <label for="who">WHO</label>
+                    <input class="invoerradio1" type="radio" id="h&b" name="rust" value="H&B" required>
+                    <label for="h&b">H&B</label><br><br>
+                </div>
+
+                <label class="label" for="eiwit">Eiwitaanbeveling:</label>
+                <select class="invoerdropdown" id="eiwit" name="eiwit">
+                    <option value="0.8">0,8 gram per kg</option>
+                    <option value="1.0">1,0 gram per kg</option>
+                    <option value="1.2">1,2 gram per kg</option>
+                    <option value="1.5">1,5 gram per kg</option>
+                </select><br><br>
+
+                <label class="label" for="toeslag">Toeslag voor activiteit en ziekte:</label>
+                <select class="invoerdropdown" id="toeslag" name="toeslag">
+                    <option value="0">&nbsp;&nbsp;0%</option>
+                    <option value="10">10%</option>
+                    <option value="20">20%</option>
+                    <option value="30">30%</option>
+                    <option value="40">40%</option>
+                    <option value="50">50%</option>
+                </select><br><br>
+
+                <div class="radioboxen">
+                    <label class="labelradio2" for="voeding">Sondevoeding:</label>
+                    <input class="invoerradio2" type="radio" id="volledig" name="voeding" value="volledig" required>
+                    <label for="volledig">Volledig</label>
+                    <input class="invoerradio2" type="radio" id="oraal" name="voeding" value="oraal" required>
+                    <label for="oraal">Sondevoeding + orale intake</label><br><br>
+                </div>
+
+                <label class="labelstart" for="start">Tijd sondevoeding starten:</label>
+                <input class="invoerTijd" min="0" max="24" type="number" id="start" name="start" required>
+                <label class="labelstop" for="stop">en stoppen:</label>
+                <input class="invoerTijd" min="0" max="24" type="number" id="stop" name="stop" required><br><br>
+
+
+                <label class="label" for="vocht">Vochtbehoefte per 24u (ml):</label>
+                <input class="invoer" min="0" max="5000" type="number" id="vocht" name="vocht" required><br><br>
+
+                <label class="label"  for="bijzonderheden">Bijzonderheden:</label>
+                <textarea class="invoer" style="resize: none; vertical-align: middle;" id="bijzonderheden" name="bijzonderheden" maxlength="1500" rows="4"></textarea><br><br>
+
+
+            </div>
+            <button class="button disabled" type="submit" id="subknop" name="submit" value="Submit">Submit</button>
+        </div>
+        <div id="namen">
+            <span id="naamtext">Annika Wilbrink, Eveline Verschuren, Noa van Daatselaar en Selena Impink</span>
+        </div>
+    </form>
+
+
+</body>
+</html>

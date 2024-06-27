@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sondevoeding Rekenhulp</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/toevoegen.css' %}">
+</head>
+<body>
+    <div class="menu">
+        <a></a>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div id="container">
+            <h1 class="titel">Sondevoeding</h1>
+            <h3 class="ondertitel">{{ondertitel}}</h3>
+            <div id="inputs">
+                <label class="label" for="id_Soort">{{form.Soort.label}}:</label>
+                {{form.Soort}}<br><br>
+                <label class="label" for="id_Energie">{{form.Energie.label}} (kcal):</label>
+                {{form.Energie}}<br><br>
+                <label class="label" for="id_Eiwit">{{form.Eiwit.label}} (g):</label>
+                {{form.Eiwit}}<br><br>
+                <label class="label" for="id_Vezels">{{form.Vezels.label}} (g):</label>
+                {{form.Vezels}}<br><br>
+                <label class="label" for="id_Zout">{{form.Zout.label}} (g):</label>
+                {{form.Zout}}<br><br>
+                <label class="label" for="id_Natrium">{{form.Natrium.label}} (mg):</label>
+                {{form.Natrium}}<br><br>
+                <label class="label" for="id_Vocht">{{form.Vocht.label}} (ml):</label>
+                {{form.Vocht}}<br><br>
+            </div>
+            <input class="button" type="button" name="Annuleren" value="Annuleren" onclick="window.location.href='/sondevoedingen/'">
+            <input class="button" type="submit" name="submit" value="Opslaan">
+            <div id="namen">
+                <span id="naamtext">Annika Wilbrink, Eveline Verschuren, Noa van Daatselaar en Selena Impink</span>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
